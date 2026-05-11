@@ -5,6 +5,7 @@ A near-real-time streaming pipeline that pulls Medicare hospital charge data fro
 ---
 
 ## Architecture
+<img width="806" height="722" alt="image" src="https://github.com/user-attachments/assets/576d1419-bf69-4771-b2c3-3fe8d37f49d3" />
 
 ```
 CMS Public API (data.cms.gov)
