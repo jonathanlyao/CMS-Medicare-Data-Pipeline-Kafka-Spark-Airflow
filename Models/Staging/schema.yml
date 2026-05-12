@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: stg_drg_charge_analysis
+    description: "Cleaned staging layer from Spark streaming output."
+    columns:
+      - name: drg_code
+        description: "DRG code"
+        tests:
+          - not_null
+          - unique
+      - name: avg_submitted_charge
+        description: "Average submitted charge by hospital"
+        tests:
+          - not_null
+      - name: avg_medicare_payment
+        description: "Average Medicare actual payment"
+        tests:
+          - not_null
+      - name: avg_charge_ratio
+        description: "Ratio of submitted charge to Medicare payment"
+        tests:
+          - not_null
+
+  - name: mart_drg_spending_quality
+    description: "Final mart: DRG-level spending analysis with outlier flags."
+    columns:
+      - name: drg_code
+        tests:
+          - not_null
+          - unique
+      - name: charge_severity
+        tests:
+          - not_null
+          - accepted_values:
+              values: [Critical, High, Medium, Normal]

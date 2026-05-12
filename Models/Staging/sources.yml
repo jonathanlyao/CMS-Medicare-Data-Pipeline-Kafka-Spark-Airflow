@@ -1,0 +1,17 @@
+version: 2
+
+
+sources: 
+  - name: streaming
+    database: CMS_MEDICARE
+    schema: STREAMING
+    tables: 
+      - name: drg_charge_analysis
+        description: "DRG-level charge aggregation written by Spark Structured streaming."
+        columns: 
+          - name: drg_cd
+            description: "DRG code"
+          - name: avg_charge_ratio
+            description: "Ratio of submitted charge to Medicare payment"
+          - name: updated_at
+            description: "Timestamp of last Spark batch write"
